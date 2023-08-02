@@ -11,4 +11,5 @@ lazy val root = (project in file("."))
       lambdaRuntimeInterfaceClient,
       scalaTest % Test
     )
-  )
+  ).settings(assembly / assemblyOutputPath := file("target/function.jar"))
+  .enablePlugins(AssemblyPlugin)
