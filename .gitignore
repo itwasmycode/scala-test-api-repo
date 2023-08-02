@@ -1,5 +1,23 @@
 *.class
 *.log
+.bsp
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Scala SBT and IntelliJ IDEA specific
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Scala Build Target
+target
+project/target
+
+# IntelliJ output folder
+out/
+
+# Ignore hidden files (optional)
+.*.swp
+.*.iml
