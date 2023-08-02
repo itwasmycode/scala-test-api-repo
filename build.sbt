@@ -1,15 +1,15 @@
-import Dependencies._
-
-ThisBuild / version := "0.1.0-SNAPSHOT"
-
-ThisBuild / scalaVersion := "2.13.11"
-
-lazy val root = (project in file("."))
-  .settings(
-    name := "scala-auth-backend-test-1",
+lazy val root = (project in file(".")).
+  settings(
+    inThisBuild(List(
+      organization    := "com.example",
+      scalaVersion    := "2.12.2"
+    )),
+    name := "hello-world",
     libraryDependencies ++= Seq(
-      lambdaRuntimeInterfaceClient,
-      scalaTest % Test
+      "org.scalatest"     %% "scalatest"         % "3.2.15"         % Test
     )
-  ).settings(assembly / assemblyOutputPath := file("target/function.jar"))
-  .enablePlugins(AssemblyPlugin)
+  )
+enablePlugins(JavaAppPackaging)
+enablePlugins(DockerPlugin)
+
+mainClass in Compile := Some("Main")
