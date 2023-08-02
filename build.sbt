@@ -9,7 +9,7 @@ ThisBuild / organizationName := ""
 // Add the AWS Lambda SDK dependency
 lazy val root = (project in file("."))
   .settings(
-    name := "scala-auth-api",
+    name := "scala-test-api-repo",
     libraryDependencies ++= Seq(
       // Add other dependencies here
       "com.amazonaws" % "aws-lambda-java-core" % "1.2.1"
