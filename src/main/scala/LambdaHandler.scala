@@ -1,9 +1,8 @@
-import com.amazonaws.services.lambda.runtime.Context
+import java.util.{ Map => JavaMap }
+import com.amazonaws.lambda.thirdparty.com.google.gson.GsonBuilder
+import com.amazonaws.services.lambda.runtime.{Context, RequestHandler}
 
-object LambdaHandler {
-  // Define your AWS Lambda handler function here
-  def handler(event: String, context: Context): String = {
-    // Your Lambda function logic goes here
-    "Hello, Lambda!"
-  }
+
+object LambdaHandler extends App {
+  print("Hello World")
 }

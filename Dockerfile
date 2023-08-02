@@ -1,13 +1,8 @@
-# Use the official GraalVM Docker image as the base image
-FROM ghcr.io/graalvm/graalvm-ce:latest
+FROM mozilla/sbt as builder
+COPY . /lambda/src/
+WORKDIR /lambda/src/
+RUN sbt assembly
 
-# Set the working directory inside the container
-WORKDIR /app
-
-# Install necessary build tools
-RUN gu install native-image
-COPY src/ /app/src/
-
-# Build the Scala project
-RUN native-image -jar /app/src/main/scala/HelloWorldLambda.scala
-
+FROM public.ecr.aws/lambda/java:11
+COPY --from=builder /lambda/src/target/function.jar ${LAMBDA_TASK_ROOT}/lib/
+CMD ["LambdaHandler::LambdaHandler"]

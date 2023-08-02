@@ -1,15 +1,17 @@
-lazy val root = (project in file(".")).
-  settings(
-    inThisBuild(List(
-      organization    := "com.example",
-      scalaVersion    := "2.12.2"
-    )),
-    name := "hello-world",
-    libraryDependencies ++= Seq(
-      "org.scalatest"     %% "scalatest"         % "3.2.15"         % Test
-    )
-  )
-enablePlugins(JavaAppPackaging)
-enablePlugins(DockerPlugin)
+import Dependencies._
 
-mainClass in Compile := Some("Main")
+ThisBuild / scalaVersion     := "2.13.5"
+ThisBuild / version          := "0.1.0"
+ThisBuild / organization     := ""
+ThisBuild / organizationName := ""
+
+lazy val root = (project in file("."))
+  .settings(
+    name := "scala-test-api-repo",
+    libraryDependencies ++= Seq(
+      lambdaRuntimeInterfaceClient,
+      scalaTest % Test
+    )
+  ).settings(
+    assembly / assemblyOutputPath := file("target/function.jar")
+  )
