@@ -1,17 +1,14 @@
 import Dependencies._
 
-// Define the Scala version and project information
-ThisBuild / scalaVersion     := "2.13.5"
-ThisBuild / version          := "0.1.0"
-ThisBuild / organization     := ""
-ThisBuild / organizationName := ""
+ThisBuild / version := "0.1.0-SNAPSHOT"
 
-// Add the AWS Lambda SDK dependency
+ThisBuild / scalaVersion := "2.13.11"
+
 lazy val root = (project in file("."))
   .settings(
-    name := "scala-auth-api",
+    name := "scala-auth-backend-test-1",
     libraryDependencies ++= Seq(
-      // Add other dependencies here
-      "com.amazonaws" % "aws-lambda-java-core" % "1.2.1"
+      lambdaRuntimeInterfaceClient,
+      scalaTest % Test
     )
   )
