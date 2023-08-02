@@ -10,12 +10,6 @@ jobs:
   docker:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        project:
-          - scala-auth-api
-          - scala-crud-api
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
